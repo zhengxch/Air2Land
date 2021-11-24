@@ -1,275 +1,65 @@
-<html><head></head><body><link rel="stylesheet" type="text/css" href="./github.css" id="_theme"><div id="_html" class="markdown-body">
-    <meta charset="UTF-8">
-    <title>A2L-Dataset Project Page</title>
-    <meta name="description" content="A ground-based vision dataset for UAV landing guidance">
-    <meta name="keywords" content="a2l dataset, auto-landing, UAV, pose estimation">
-    <link rel="shortcut icon" href="./a2l.ico">
-
-
-<div align="center">
-
-<h1 id="air2land-a-ground-based-vision-dataset-for-uav-landing-guidance">Air2Land: A ground-based vision dataset for UAV landing guidance</h1>
-<p>School of Aeronautics and Astronautics, Sun Yat-Sen University, GuangZhou, China</p>
-<hr>
-<h3 id="abstract--dataset--experiments--other"><a href="#1-abstract">Abstract</a> | <a href="#2-our-air2land-dataset">Dataset</a> | <a href="#3-experiments">Experiments</a> | <a href="#4-other">Other</a></h3>
-</div>
-
-<h2 id="1-abstract"><a class="anchor" name="1-abstract" href="#1-abstract"><span class="octicon octicon-link"></span></a>1. Abstract</h2>
-<p style="text-align: justify"><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We present a new dataset, called Air2Land(A2L), for advancing the state-of-art in object detection and 6D pose estimation in the context of UAV auto landing research. It meets vision and robotics for ground-based vision guidance system having the multi-modal data obtained by different sensors, and pushes forward the development of computer vision and robotic algorithms targeted at visually assisted UAV landing. The dataset, contains sequential stereo images and other sensor data (UAV pose, PTU angles) simulated in various climate conditions and landing scenarios, can be employed for tasks including UAV tracking, keypoint localization, pose estimation and action recognition, etc. In addition to providing plentiful and scene-rich data, our dataset covers high risk scenarios that are hardly accessing in reality.</em></p>
-
-
-<h2 id="2-our-air2land-dataset"><a class="anchor" name="2-our-air2land-dataset" href="#2-our-air2land-dataset"><span class="octicon octicon-link"></span></a>2. Our Air2Land dataset</h2>
-<div align="center">
-
-<p><img src="./imgs/Air2Land-dataset.png" alt="Air2Land">
-    <br>
-    </p><div style="color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">Figure 1</div><p></p>
-</div>
-
-<p><strong>Notice</strong>: You can download the dataset (only partially provided) using <a href="https://pan.baidu.com/s/1DP8yxtm3dfXAUWbykk12iQ">Baidu Drive</a>  (size: 2.01GB, passward: <strong>6tk1</strong>).</p>
-<h3 id="21-overview-infomation-of-the-air2land-dataset"><a class="anchor" name="21-overview-infomation-of-the-air2land-dataset" href="#21-overview-infomation-of-the-air2land-dataset"><span class="octicon octicon-link"></span></a>2.1 Overview infomation of the Air2Land dataset</h3>
-<div align="center">
-
-<table>
-<thead>
-<tr>
-<th align="center"><em>Dataset</em></th>
-<th align="center"><em>Number of images</em></th>
-<th align="center"><em>Resolution</em></th>
-<th align="center"><em>Data type</em></th>
-<th align="center"><em>Environment</em></th>
-<th align="center"><em>Perspective</em></th>
-<th align="center"><em>Climate variations</em></th>
-<th align="center"><em>Extreme lighting</em></th>
-<th align="center"><em>Stereo</em></th>
-<th align="center"><em>Annotations</em></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Air2Land</td>
-<td align="center">76k</td>
-<td align="center">1280×720</td>
-<td align="center">Synthetic</td>
-<td align="center">Outdoor</td>
-<td align="center">Ground-to-air</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td align="center">Bbox/Keypoints/6d pose/Segmentation</td>
-</tr>
-</tbody></table>
-</div>
-
-<div align="center">
-    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">Table 1</div>
-</div>
-
-<h3 id="22-the-terrestrial-stereo-guidance-system-for-uav-safe-landing"><a class="anchor" name="22-the-terrestrial-stereo-guidance-system-for-uav-safe-landing" href="#22-the-terrestrial-stereo-guidance-system-for-uav-safe-landing"><span class="octicon octicon-link"></span></a>2.2 The terrestrial stereo guidance system for UAV safe landing</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;In our guidance system, two PTUs (pan-tilt unit) are symmetrically located on both sides of the run way with each camera fixed on. The computing unit processes the images captured by cameras during UAV landing and estimates the its spatial coordinate and posture. The motion parameters are wirelessly feedback to the on-board autopilot to assist its safe landing.
-&nbsp;&nbsp;&nbsp;&nbsp;As shown in Figure 2, the <a href="https://pixhawk.org/">Pixhawk autopilot</a> runs the actual airborne flight control code, which is responsible for the control of the drone during the loading and landing of the mission route, the monitoring and feedback of the drone flight status, the analysis and execution of operating instructions, etc. <a href="http://qgroundcontrol.com/">QGroundControl</a> is a ground station for UAV flight protection, mainly responsible for flight mission planning, digital map display, data link transmission, and comprehensive data analysis. <a href="https://www.ros.org/">ROS</a> connects various components to realize the transmission of messages on different topics, and the 3D simulator performs simulation and display of the scene.
-&nbsp;&nbsp;&nbsp;&nbsp;The built simulation system includes the physical controller and professional dynamics simulation software into the loop, which <strong>retains the kinematic characteristics of the simulation data to the greatest extent</strong>.</p>
-<div align="center">
-    <img style="width:800px" src="./imgs/simulation-system.png">
-    <br>
-    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">Figure 2</div>
-</div>
-
-<h3 id="23-typical-samples-from-air2land"><a class="anchor" name="23-typical-samples-from-air2land" href="#23-typical-samples-from-air2land"><span class="octicon octicon-link"></span></a>2.3 Typical samples from Air2Land</h3>
-<p> &nbsp;&nbsp;&nbsp;&nbsp;The UAV present a very diverse range of perspectives and scale variations from view of terrestrial cameras.</p>
-<div align="center">
-    <img style="width:800px" src="./imgs/samples.png">
-    <br>
-    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">Figure 3</div>
-</div>
-
-
-
-
-<h2 id="3-experiments"><a class="anchor" name="3-experiments" href="#3-experiments"><span class="octicon octicon-link"></span></a>3. Experiments</h2>
-<h3 id="31-keypoint-localization-experiments"><a class="anchor" name="31-keypoint-localization-experiments" href="#31-keypoint-localization-experiments"><span class="octicon octicon-link"></span></a>3.1 Keypoint localization experiments</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;The most widely used pose estimation method is to apply the pin-hole camera model to solve the correspondence between 2D image points and 3D spatial points as a <strong>PnP problem</strong>. After detailed consideration, we selected the <strong>left wing tip</strong>, <strong>left tail tip</strong>, <strong>front gear</strong>, <strong>nose</strong>, <strong>right wing tip</strong>, and <strong>right tail tip</strong> of the UAV as feature points, and verified the localization accuracy of a key point recognition network -- <a href="https://arxiv.org/pdf/1603.06937">Stacked Hourglass network</a> under different weather conditions.
-&nbsp;&nbsp;&nbsp;&nbsp;We use images generated under sunny, cloudy, light rain, moderate rain, light snow, moderate snow as the training set, and the testing set is composed of images under heavy snow, heavy rain, and foggy weather, both of which cover the early morning, midday, and evening time periods.</p>
-<div align="center">
-    <img style="width:700px" src="./imgs/keypoints_localization.jpg">
-        <br>
-    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">Figure 4</div>
-</div>
-
-<h3 id="32-experimental-results"><a class="anchor" name="32-experimental-results" href="#32-experimental-results"><span class="octicon octicon-link"></span></a>3.2 Experimental results</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;To compare localization performances, we use <a href="https://www.cs.cmu.edu/~deva/papers/pose_pami.pdf">percentage of correct key-points (PCK)</a> as evaluation metric. Detected point is considered correct if the distance between the predicted and the ground true is within a certain threshold (threshold varies). Drawing on this metric, we choose the bounding box of the drone's nose as a benchmark, and set the correct threshold of prediction to 50% of the length of the rectangular box, which we also call <a href="mailto:PCKh@0.5">PCKh@0.5</a>. </p>
-<div style="margin:0; auto width: 20 px;">
-<table>
-<thead>
-<tr>
-<th align="center">weather</th>
-<th align="center">time</th>
-<th align="center">LW</th>
-<th align="center">LT</th>
-<th align="center">FG</th>
-<th align="center">N</th>
-<th align="center">RW</th>
-<th align="center">RT</th>
-<th align="center">mean</th>
-<th align="center">fps</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">foggy</td>
-<td align="center">8:00</td>
-<td align="center">62.02</td>
-<td align="center">70.91</td>
-<td align="center">68.60</td>
-<td align="center">72.76</td>
-<td align="center">67.32</td>
-<td align="center">79.32</td>
-<td align="center">70.16</td>
-<td align="center">29.98</td>
-</tr>
-<tr>
-<td align="center">foggy</td>
-<td align="center">12:00</td>
-<td align="center">63.63</td>
-<td align="center">72.76</td>
-<td align="center">77.57</td>
-<td align="center">73.87</td>
-<td align="center">75.33</td>
-<td align="center">73.97</td>
-<td align="center">72.86</td>
-<td align="center">31.61</td>
-</tr>
-<tr>
-<td align="center">foggy</td>
-<td align="center">17:00</td>
-<td align="center">60.29</td>
-<td align="center">77.13</td>
-<td align="center">72.41</td>
-<td align="center">73.05</td>
-<td align="center">68.20</td>
-<td align="center">75.38</td>
-<td align="center">71.08</td>
-<td align="center">30.07</td>
-</tr>
-<tr>
-<td align="center">Heavy rain</td>
-<td align="center">8:00</td>
-<td align="center">63.62</td>
-<td align="center">79.42</td>
-<td align="center">77.41</td>
-<td align="center">75.99</td>
-<td align="center">73.08</td>
-<td align="center">78.95</td>
-<td align="center">74.75</td>
-<td align="center">30.04</td>
-</tr>
-<tr>
-<td align="center">Heavy rain</td>
-<td align="center">12:00</td>
-<td align="center">68.90</td>
-<td align="center">78.82</td>
-<td align="center">79.92</td>
-<td align="center">77.98</td>
-<td align="center">78.92</td>
-<td align="center">78.99</td>
-<td align="center">77.26</td>
-<td align="center">31.40</td>
-</tr>
-<tr>
-<td align="center">Heavy rain</td>
-<td align="center">17:00</td>
-<td align="center">60.63</td>
-<td align="center">72.77</td>
-<td align="center">74.39</td>
-<td align="center">79.24</td>
-<td align="center">69.36</td>
-<td align="center">76.39</td>
-<td align="center">74.43</td>
-<td align="center">27.24</td>
-</tr>
-<tr>
-<td align="center">Heavy snow</td>
-<td align="center">8:00</td>
-<td align="center">61.34</td>
-<td align="center">68.09</td>
-<td align="center">69.57</td>
-<td align="center">70.87</td>
-<td align="center">60.86</td>
-<td align="center">70.54</td>
-<td align="center">66.88</td>
-<td align="center">21.67</td>
-</tr>
-<tr>
-<td align="center">Heavy snow</td>
-<td align="center">12:00</td>
-<td align="center">62.62</td>
-<td align="center">70.01</td>
-<td align="center">72.04</td>
-<td align="center">74.90</td>
-<td align="center">60.64</td>
-<td align="center">72.28</td>
-<td align="center">68.75</td>
-<td align="center">24.94</td>
-</tr>
-<tr>
-<td align="center">Heavy snow</td>
-<td align="center">17:00</td>
-<td align="center">64.29</td>
-<td align="center">63.06</td>
-<td align="center">66.30</td>
-<td align="center">70.38</td>
-<td align="center">65.32</td>
-<td align="center">69.77</td>
-<td align="center">66.52</td>
-<td align="center">23.82</td>
-</tr>
-<tr>
-<td align="center">mean</td>
-<td align="center"></td>
-<td align="center">62.75</td>
-<td align="center">72.55</td>
-<td align="center">73.13</td>
-<td align="center">74.34</td>
-<td align="center">68.78</td>
-<td align="center">75.07</td>
-<td align="center">71.41</td>
-<td align="center">27.86</td>
-</tr>
-</tbody></table></div>
-<div align="center">
-    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">Table 2</div>
-</div>
-
-<h2 id="4-other"><a class="anchor" name="4-other" href="#4-other"><span class="octicon octicon-link"></span></a>4. Other</h2>
-<div style="text-align: justify">
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/DIYer22/retail_product_checkout_tools"><code>a2ltool</code></a>: A detailed description of the coordinate system for the two airports will be provided, as well as a sample indexer that allows easy extraction of samples. More information can be found in <a href="https://github.com/DIYer22/retail_product_checkout_tools"><code>a2ltool</code></a>.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;This dataset and code packages are free for academic usage. You can run them at your own risk. For other purposes, please contact the  author.</p>
-</div>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-133191784-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-133191784-1');
-</script>
-</div></body></html>
+<html>
+   <head></head>
+   <body>
+      <link rel="stylesheet" type="text/css" href="./github.css" id="_theme">
+      <div id="_html" class="markdown-body">
+         <meta charset="UTF-8">
+         <title>A2L-Dataset Project Page</title>
+         <meta name="description" content="A ground-based vision dataset for UAV landing guidance">
+         <meta name="keywords" content="a2l dataset, auto-landing, UAV, pose estimation">
+         <link rel="shortcut icon" href="./a2l.ico">
+         <style>
+            table {
+            margin: auto;
+            }
+         </style>
+         <div align="center">
+            <h1 id="air2land-dataset-a-deep-learning-dataset-for-unmanned-aerial-vehicle-autolanding-from-air-to-land">Air2Land Dataset: A deep learning dataset for unmanned aerial vehicle autolanding from air to land</h1>
+            <p>School of Aeronautics and Astronautics, Sun Yat-Sen University, GuangZhou, China</p>
+            <hr>
+            <h3 id="overview--simulation-system--download--contact"><a href="#what-is-air2land">Overview</a> | <a href="#simulation-system">Simulation system</a> | <a href="#download">Download</a> | <a href="#contact">Contact</a></h3>
+         </div>
+         <h2 id="what-is-air2land"><a class="anchor" name="what-is-air2land" href="#what-is-air2land"><span class="octicon octicon-link"></span></a>What is Air2Land?</h2>
+         <p>Air2Land dataset is a multi-modal UAV dataset for object detection and pose estimation in the context of fixed-wing unmanned aerial vehicle(UAV)’s auto-landing scenarios.</p>
+         <p>It bridges vision and robotics for ground-based vision guidance systems having the multi-modal data obtained by different sensors and pushes forward the development of computer vision and robotic algorithms targeted at visually assisted UAV landing. The dataset is composed of sequential stereo images and other sensor data (UAV pose, PTU angles) simulated in various climate conditions and landing scenarios. Since real-world automated landing data is very limited, our dataset provides the necessary foundation for vision-based tasks such as UAV detection, key point localization, and pose estimation .etc.</p>
+         <p>Air2Land has several features:</p>
+         <ul>
+            <li>UAV detection, key point localization, pose estimation in ground vision images</li>
+            <li>115,684 labelled frames</li>
+            <li>Rich in light and weather variation, covering early morning, midday and night, as well as sunny, rainy, snowy and foggy weather conditions.</li>
+            <li>Frames are also labelled with GPS and gimbal rotation angle.</li>
+         </ul>
+         <div align="center">
+            <img style="height：350px" src="./imgs/Air2Land-dataset.png">
+            <br>
+            <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+               display: inline-block;
+               color: #999;
+               padding: 2px;">Figure 1. Sample</div>
+         </div>
+         <h2 id="simulation-system"><a class="anchor" name="simulation-system" href="#simulation-system"><span class="octicon octicon-link"></span></a>Simulation system</h2>
+         <p>In our guidance system, two PTUs (pan-tilt unit) are symmetrically located on both sides of the run way with each camera fixed on. The computing unit processes the images captured by cameras during UAV landing and estimates the its spatial coordinate and posture. The motion parameters are wirelessly feedback to the on-board autopilot to assist its safe landing. As shown in Figure 2, the <a href="https://pixhawk.org/">Pixhawk autopilot</a> runs the actual airborne flight control code, which is responsible for the control of the drone during the loading and landing of the mission route, the monitoring and feedback of the drone flight status, the analysis and execution of operating instructions, etc. <a href="http://qgroundcontrol.com/">QGroundControl</a> is a ground station for UAV flight protection, mainly responsible for flight mission planning, digital map display, data link transmission, and comprehensive data analysis. <a href="https://www.ros.org/">ROS</a> connects various components to realize the transmission of messages on different topics, and the 3D simulator performs simulation and display of the scene. The built simulation system includes the physical controller and professional dynamics simulation software into the loop, which <strong>retains the kinematic characteristics of the simulation data to the greatest extent</strong>.</p>
+         <div align="center">
+            <img style="width:800px" src="./imgs/guidanceSystem.png">
+            <br>
+            <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+               display: inline-block;
+               color: #999;
+               padding: 2px;">Figure 2. Simulation system</div>
+         </div>
+         <h2 id="download"><a class="anchor" name="download" href="#download"><span class="octicon octicon-link"></span></a>Download</h2>
+         <p>You are free to use Air2Land dataset and all empirical data and metadata under the CC-BY licence. You can download the dataset (only partially provided) using <a href="https://pan.baidu.com/s/1DP8yxtm3dfXAUWbykk12iQ">Baidu Drive</a>  (size: 2.01GB, passward: <strong>6tk1</strong>). When using this dataset in your research, we would appreciate that you cite our paper.</p>
+         <h2 id="contact"><a class="anchor" name="contact" href="#contact"><span class="octicon octicon-link"></span></a>Contact</h2>
+         <p>The dataset, website, and API is still under development, and being maintained by Xunchen. Please contact me via e-mail if you have any questions: <a href="mailto:zhengxch7@mail2.sysu.edu.cn">zhengxch7@mail2.sysu.edu.cn</a></p>
+         <!-- Global site tag (gtag.js) - Google Analytics -->
+         <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-133191784-1"></script>
+         <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', 'UA-133191784-1');
+         </script>
+      </div>
+   </body>
+</html>
